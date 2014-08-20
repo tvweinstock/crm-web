@@ -6,7 +6,7 @@ require_relative 'rolodex'
 
 get '/' do
   @crm_app_name = "Tobi's CRM"
-  erb :index
+  erb :index, :layout => :post
 end
 
 
