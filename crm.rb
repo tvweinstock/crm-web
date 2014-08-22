@@ -2,20 +2,34 @@ require 'sinatra'
 require 'data_mapper'
 require_relative 'rolodex'
 
-DataMapper.setup(:default, "sqlite3:database.sqlite3")
+DataMapper.setup(:default, "sqlite3:database.sqlite3") #file to store our database 
 
 class Contact
-  include DataMapper::Resource
+  include DataMapper::Resource # module that allows us to interface with the DataMapper database
 
-  attr_accessor :id, :first_name, :last_name, :email, :note
+  # attr_accessor :id, :first_name, :last_name, :email, :note, :active
+  # attr_reader :created_date
 
-  def initialize(first_name, last_name, email, note)
-    @first_name = first_name
-    @last_name = last_name
-    @email = email
-    @note = note
-  end
+  property :id, Serial
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
+  property :active, Boolean
+  property :created_date, Date
+
+  # def initialize(first_name, last_name, email, note, active, created_date)
+  #   @first_name = first_name
+  #   @last_name = last_name
+  #   @email = email
+  #   @note = note
+  #   @active = true
+  #   @created_date = Time.now
+
 end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
 
 @@rolodex = Rolodex.new
@@ -31,7 +45,7 @@ get "/contacts" do
 end
 
 post '/contacts' do
-  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
+  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note], params[:active]) #params[:created_date])
   @@rolodex.add_contact(new_contact)
   redirect to('/contacts')
 end
@@ -66,6 +80,7 @@ put "/contacts/:id" do
     @contact.last_name = params[:last_name]
     @contact.email = params[:email]
     @contact.note = params[:note]
+    @contact.active = params[:active]
 
     redirect to ("/contacts")
   else

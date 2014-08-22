@@ -1,6 +1,8 @@
 <h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
 <p><strong>Email:</strong> <%= @contact.email %></p>
 <p><strong>Note:</strong><%= @contact.note %> </p>
+<p><strong>Date of Entry:</strong><%= @contact.created_date %> </p>
+<p><strong>Status:</strong><%= @contact.active %> </p>
 
 
 <form action="/contacts/<%= @contact.id %>" method="post">
