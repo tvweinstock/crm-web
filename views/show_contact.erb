@@ -2,10 +2,14 @@
 <p><strong>Email:</strong> <%= @contact.email %></p>
 <p><strong>Note:</strong><%= @contact.note %> </p>
 <p><strong>Date of Entry:</strong><%= @contact.created_date %> </p>
-<p><strong>Status:</strong><%= @contact.active %> </p>
+<p><strong>Status:</strong><%= @contact.status %> </p>
 
 
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" name="Delete Contact" value="delete">
 </form>
+
+<a href="/contacts/<%= @contact.id %>/edit"> Edit </a>
+
+

@@ -1,15 +1,40 @@
 <h1>Create New Contact</h1>
 
 <form action="/contacts" method="post">
-  <label>First Name<input type="text" class="my_input" placeholder="Carrie" name="first_name"></label>
-  <label>Last Name<input type="text" class="my_input" placeholder="Bradshaw" name="last_name"></label>
-  <label>Email<input type="text" class="my_input" placeholder="satc@gmail.com" name="email"></label>
-  <label>Note<input type="text" class="my_note" placeholder="I couldn't help but wonder..." name="note"></label>
+  <fieldset>
 
-  <label>Active<input type="radio" name="status" value="active"></label>
-  <label>Inactive<input type="radio" name="status" value="inactive"></label>
+    <ul class="list1">
 
-  
+      <li>
+        <label for=name>First Name</label>
+        <input type="text" class="my_input" placeholder="Carrie" name="first_name">
+      </li>
+      <li>  
+        <label for=name>Last Name</label>
+        <input type="text" class="my_input" placeholder="Bradshaw" name="last_name">
+      </li>
+      <li>
+        <label for=email>Email</label>
+        <input type="email" class="my_input" placeholder="satc@gmail.com" name="email">
+      </li>
+    </fieldset>
 
-  <label><input type="submit" name="Submit">
+  </ul>
+
+  <fieldset>
+
+    <ul class="list2">
+      <li>
+        <label for=note>Note</label>
+        <input type="text" class="my_note" placeholder="I couldn't help but wonder..." name="note">
+      </li>
+      <li>
+        <label for=status>Active</label><input type="radio" name="status" value=true>
+        <label for=status>Inactive</label><input type="radio" name="status" value=false>
+      </li>
+    </ul>
+  </fieldset>
+  <label><input type="submit" name="Submit"></label>
+
+
 </form>
