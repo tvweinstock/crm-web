@@ -96,4 +96,8 @@ delete "/contacts/:id" do
 
 end
 
+get "/contact/search_contact" do
+  @contact = Contact.get
+end
+
 
