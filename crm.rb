@@ -50,6 +50,16 @@ get "/contacts/new" do
   erb :new_contact
 end
 
+
+get "/contacts/find" do
+  erb :search_contact
+end
+
+get "/contacts/search" do
+  @contacts = Contact.all(first_name: params[:first_name])
+  erb :contacts
+end
+
 get "/contacts/:id" do
   @contact = Contact.get(params[:id].to_i)
   if @contact
@@ -95,9 +105,4 @@ delete "/contacts/:id" do
   end
 
 end
-
-get "/contact/search_contact" do
-  @contact = Contact.get
-end
-
 
