@@ -56,8 +56,7 @@ get "/contacts/find" do
 end
 
 get "/contacts/search" do
-  @contacts = Contact.all(first_name: params[:first_name])
-              Contact.all(last_name: params[:last_name])
+  @contacts = Contact.all(first_name: params[:first_name]) | Contact.all(last_name: params[:last_name])
   erb :contacts
 end
 
